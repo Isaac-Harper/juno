@@ -183,54 +183,8 @@ Function Layer: Function keys
 ,-------------------------------------------.                              ,-------------------------------------------.
 |        |  F9  | F10  | F11  | F12  |      |                              |      |      |      |      |      |        |
 |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
-|        |  F5  |  F6  |  F7  |  F8  |      |                              |      | Shift| Ctrl |  Alt |  GUI |        |
-|--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
-|        |  F1  |  F2  |  F3  |  F4  |      |      |      |  |      |      |      |      |      |      |      |        |
-`----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
-                       |      |      |      |      |      |  |      |      |      |      |      |
-                       |      |      |      |      |      |  |      |      |      |      |      |
-                       `----------------------------------'  `----------------------------------'
-```
-In a similar fashion to the nav layer, pressing down `FKEYS` with the right thumb enables a numpad of function keys on the opposite hand and modifiers on the right-hand home row. Once again, mirror symmetry is leveraged in this keymap for the order of the right-hand modifiers.
+|        |  F5  |  F6  |  F7  |  F8  |      |                              |      | Shift| Ctrl |  Alt |  GUI 
 
-The <kbd>Alt</kbd> modifier, despite being situated on the right half of the keyboard is *not* `KC_RALT`, it is `KC_LALT`. `KC_RALT` is actually the <kbd>AltGr</kbd> key which generally acts very differently to the left <kbd>Alt</kbd> key. Keyboard shortcuts involving <kbd>AltGr</kbd>+<kbd>F#</kbd> are rare and infrequent as opposed to the much more common <kbd>Alt</kbd>+<kbd>F#</kbd> shortcuts. Consequently, `KC_LALT` was chosen for the function layer.
-
-Since there are more than 10 function keys, the cluster of F-keys does not follow the usual 3×3+1 numpad arrangement.
-
-
-## Adjust layer
-```
-Adjust Layer: Default layer settings, RGB
-                                                                                                                         
-,-------------------------------------------.                              ,-------------------------------------------.
-|        |      |      |QWERTY|      |      |                              |      |      |      |      |      |        |
-|--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
-|        |      |      |Dvorak|      |      |                              | TOG  | SAI  | HUI  | VAI  | MOD  |        |
-|--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
-|        |      |      |Colmak|      |      |      |      |  |      |      |      | SAD  | HUD  | VAD  | RMOD |        |
-`----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
-                       |      |      |      |      |      |  |      |      |      |      |      |
-                       |      |      |      |      |      |  |      |      |      |      |      |
-                       `----------------------------------'  `----------------------------------'
-```
-
-Default layer settings on the left and various RGB underglow controls on the right.
-
-The default layer settings are lined up on the middle finger column because the home middle finger key is <kbd>D</kbd> on QWERTY (like the “D” in “Dvorak”) and the lower middle finger key is <kbd>C</kbd> on QWERTY (like the “C” in “Colemak”). I can hear you say that “QWERTY” doesn't start with “E” but Dvorak and Colemak were already aligned in a column so the QWERTY may as well join the formation.
-
-NOTE: The default layer settings set by those keys are *NOT* stored in EEPROM and thus do not persist through boots. If you wish to change the default layer in a non-volatile manner, either change the order of the layers in the firmware, for example like so if you want to set Dvorak as the new default:
-```c
-enum layers {
-    _DVORAK = 0,
-    _QWERTY,
-    _COLEMAK_DH,
-    _NAV,
-    _SYM,
-    _FUNCTION,
-    _ADJUST
-};
-```
-or re-define the `QWERTY`, `COLEMAK` and `DVORAK` keys to point to custom keycodes starting on `SAFE_RANGE` and calling the `set_single_persistent_default_layer` function inside of `process_record_user`.
 
 ## Hardware Features
 
@@ -242,9 +196,3 @@ The OLEDs display the current layer at the top of the active layers stack, the K
 
 ### Underglow
 The underglow LEDs should be red.
-
-## Going further…
-
-This default keymap can be used as is, unchanged, as a daily driver for your Kyria but you're invited to treat your keymap like a bonsai. At the beginning, it's just like the default keymap but from time to time, you can tweak it a little. Cut a little key here, let another combo grow there. Slowly but surely it will be a unique keymap that will fit you like a glove.
-
-Check out the #keymap-ideas channel on the official SplitKB Discord server for inspiration.
