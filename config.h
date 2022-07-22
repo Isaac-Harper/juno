@@ -10,12 +10,13 @@
 
 #define DEFAULT_LAYER = 1
 
-// If you are using an Elite C rev3 on the slave side, uncomment the lines below:
-//#define SPLIT_USB_DETECT
-//#define NO_USB_STARTUP_CHECK
+
+
+#define TAPPING_TERM 175
+#define TAPPING_TOGGLE 3
 
 #define OLED_BRIGHTNESS 255
-#define OLED_TIMEOUT 20000
+#define OLED_TIMEOUT 30000
 
 #undef LOCKING_SUPPORT_ENABLE // cherry mx lock only
 #undef LOCKING_RESYNC_ENABLE  // cherry mx lock only
