@@ -10,10 +10,16 @@
 
 #define DEFAULT_LAYER = 1
 
+// Configure the global tapping term (default: 200ms)
+#define TAPPING_TERM 200
 
+// Prevent normal rollover on alphas from accidentally triggering mods.
+#define IGNORE_MOD_TAP_INTERRUPT
 
-#define TAPPING_TERM 175
-#define TAPPING_TOGGLE 3
+// Enable rapid switch from tap to hold, disables double tap hold auto-repeat.
+#define TAPPING_FORCE_HOLD
+
+#define BOTH_SHIFTS_TURNS_ON_CAPS_WORD
 
 #define OLED_BRIGHTNESS 255
 #define OLED_TIMEOUT 30000

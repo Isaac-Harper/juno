@@ -9,7 +9,8 @@ MOUSEKEY_ENABLE = no
 
 WPM_ENABLE = yes	# Enable word per minute counter
 
-
+PROGRAMMABLE_BUTTON_ENABLE = yes
+CAPS_WORD_ENABLE = yes
 
 MIDI_ENABLE = no
 AUDIO_ENABLE = no
