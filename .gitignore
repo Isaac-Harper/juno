@@ -1,2 +1,6 @@
 .vscode/*
 
+obj_*
+*.hex
+*.elf
+*.map
