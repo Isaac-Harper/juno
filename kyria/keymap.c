@@ -65,7 +65,7 @@ enum layers {
 
 
 // Aliases for readability
-#define HOME            DF(_QWERTY){}
+#define HOME            DF(_QWERTY)
 #define SYM             MO(_SYM)
 #define SYT             TG(_SYM)
 #define MINECFT         TG(_MINECFT)
@@ -83,30 +83,54 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { // this is fine
 /*
  * Template Layer: 
  *
- * ,-----------------------------------------.                              ,-----------------------------------------.
- * |      |      |      |      |      |      |                              |      |      |      |      |      |      |
- * |------+------+------+------+------+------|                              |------+------+------+------+------+------|
- * |      |      |      |      |      |      |                              |      |      |      |      |      |      |
- * |------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+------|
- * |      |      |      |      |      |      |      |      |  |      |      |      |      |      |      |      |      |
- * `--------------------+------+------+------+      |      |  |      |      +------+------+------+--------------------'
- *                      |      |      |      |      |      |  |      |      |      |      |      |
- *                      `----------------------------------'  `----------------------------------'
+ * ┌─────┬─────┬─────┬─────┬─────┬─────┐
+ * │ XXX │ XXX │ XXX │ XXX │ XXX │ XXX │
+ * ├─────┼─────┼─────┼─────┼─────┼─────┤   LEFT
+ * │ XXX │ XXX │ XXX │ XXX │ XXX │ XXX │
+ * ├─────┼─────┼─────┼─────┼─────┼─────┼─────┬─────┐
+ * │ XXX │ XXX │ XXX │ XXX │ XXX │ XXX │     │     │
+ * └─────┴─────┴─────┼─────┼─────┼─────┤ XXX │ XXX │
+ *                   │ XXX │ XXX │ XXX │     │     │
+ *                   └─────┴─────┴─────┴─────┴─────┘
+ * 
+ *  
+ *             ┌─────┬─────┬─────┬─────┬─────┬─────┐
+ *             │ XXX │ XXX │ XXX │ XXX │ XXX │ XXX │
+ *     RIGHT   ├─────┼─────┼─────┼─────┼─────┼─────┤
+ *             │ XXX │ XXX │ XXX │ XXX │ XXX │ XXX │
+ * ┌─────┬─────┼─────┼─────┼─────┼─────┼─────┼─────┤
+ * │     │     │ XXX │ XXX │ XXX │ XXX │ XXX │ XXX │
+ * │ XXX │ XXX ├─────┼─────┼─────┼─────┴─────┴─────┘
+ * │     │     │ XXX │ XXX │ XXX │
+ * └─────┴─────┴─────┴─────┴─────┘
+ *
+ *
  */
 
 /*
  * Base Layer: QWERTY
  *
- * ,-----------------------------------------.                              ,-----------------------------------------.
- * |  esc |   q  |   w  |   e  |   r  |   t  |                              |   y  |   u  |   i  |   o  |   p  | hui+ |
- * |------+------+------+------+------+------|                              |------+------+------+------+------+------|
- * |  tab |   a  |   s  |   d  |   f  |   g  |                              |   h  |   j  |   k  |   l  |   ;  |   '  |
- * |------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+------|
- * |      |   z  |   x  |   c  |   v  |   b  |      |      |  |      |      |   n  |   m  |   ,  |   .  |   /  | sat+ |
- * `--------------------+------+------+------+  spc |  alt |  |  SYM |  ent +------+------+------+--------------------'
- *                      |      | (sft | ctrl |      |  del |  | bspc |      | mous | sft) | home |
- *                      `----------------------------------'  `----------------------------------'
- */
+ * ┌─────┬─────┬─────┬─────┬─────┬─────┐
+ * │ esc │  q  │  w  │  e  │  r  │  t  │
+ * ├─────┼─────┼─────┼─────┼─────┼─────┤   LEFT
+ * │ tab │  a  │  s  │  d  │  f  │  g  │
+ * ├─────┼─────┼─────┼─────┼─────┼─────┼─────┬─────┐
+ * │ alt │  z  │  x  │  c  │  v  │  b  │     │     │
+ * └─────┴─────┴─────┼─────┼─────┼─────┤ spc │ gui │
+ *                   │ XXX │ sft │ ctr │     │ del │
+ *                   └─────┴─────┴─────┴─────┴─────┘
+ * 
+ *  
+ *             ┌─────┬─────┬─────┬─────┬─────┬─────┐
+ *             │  y  │  u  │  i  │  o  │  p  │ XXX │
+ *     RIGHT   ├─────┼─────┼─────┼─────┼─────┼─────┤
+ *             │  h  │  j  │  k  │  l  │  ;  │  '  │
+ * ┌─────┬─────┼─────┼─────┼─────┼─────┼─────┼─────┤
+ * │     │     │  n  │  m  │  ,  │  .  │  /  │ XXX │
+ * │ sym │ ent ├─────┼─────┼─────┼─────┴─────┴─────┘
+ * │ bsp │     │ mos │ sft │ XXX │
+ * └─────┴─────┴─────┴─────┴─────┘
+*/
 
     [_QWERTY] = LAYOUT(
       KC_ESC,   KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,                                             KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,     RGB_TOG,
@@ -119,20 +143,32 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { // this is fine
  /*
  * SYM Layer: numbers, symbols, and arrows 
  *
- * ,-----------------------------------------.                              ,-----------------------------------------.
- * |      |   <  |   [  |   {  |   (  |      |                              |   `  |   7  |   8  |   9  |   0  |      |
- * |------+------+------+------+------+------|                              |------+------+------+------+------+------|
- * |      | left | down |  up  | righ |      |                              |   -  |   4  |   5  |   6  |   \  |      |
- * |------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+------|
- * |      |   >  |   ]  |   }  |   )  |      |      |      |  |      |      |   =  |   1  |   2  |   3  |      |      |
- * `--------------------+------+------+------+      |      |  |      |      +------+------+------+--------------------'
- *                      |      |      |      |      |      |  |      |      |      |      |      |
- *                      `----------------------------------'  `----------------------------------'
+ * ┌─────┬─────┬─────┬─────┬─────┬─────┐
+ * │ XXX │ < > │ [ ] │ { } │ ( ) │ XXX │
+ * ├─────┼─────┼─────┼─────┼─────┼─────┤   LEFT
+ * │ XXX │  ←  │  ↓  │  ↑  │  →  │ XXX │
+ * ├─────┼─────┼─────┼─────┼─────┼─────┼─────┬─────┐
+ * │ XXX │ XXX │ XXX │ XXX │ XXX │ XXX │     │     │
+ * └─────┴─────┴─────┼─────┼─────┼─────┤ XXX │ XXX │
+ *                   │ XXX │ XXX │ XXX │     │     │
+ *                   └─────┴─────┴─────┴─────┴─────┘
+ * 
+ *  
+ *             ┌─────┬─────┬─────┬─────┬─────┬─────┐
+ *             │  `  │  7  │  8  │  9  │  0  │ F2  │
+ *     RIGHT   ├─────┼─────┼─────┼─────┼─────┼─────┤
+ *             │  ~  │  4  │  5  │  6  │  \  │ F5  │
+ * ┌─────┬─────┼─────┼─────┼─────┼─────┼─────┼─────┤
+ * │     │     │  =  │  1  │  2  │  3  │ XXX │ XXX │
+ * │ XXX │ XXX ├─────┼─────┼─────┼─────┴─────┴─────┘
+ * │     │     │ XXX │ XXX │ XXX │
+ * └─────┴─────┴─────┴─────┴─────┘
+ *
  */
     [_SYM] = LAYOUT(
       _______,  TD(ALI),  TD(BRA),  TD(CUR),  TD(PAR),  KC_F2,                                            KC_GRV,   KC_7,     KC_8,     KC_9,     KC_0,     _______,
       _______,  KC_LEFT,  KC_DOWN,  KC_UP,    KC_RGHT,  KC_F5,                                            KC_MINS,  KC_4,     KC_5,     KC_6,     KC_BSLS,  _______,
-      _______,  KC_GT,    KC_RBRC,  KC_RCBR,  KC_RPRN,  _______,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  KC_EQL,   KC_1,     KC_2,     KC_3,     _______,  _______,
+      _______,  _______,  _______,  _______,  _______,  _______,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  KC_EQL,   KC_1,     KC_2,     KC_3,     _______,  _______,
                                     _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______
     ),
 
@@ -151,6 +187,28 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { // this is fine
  *                        |xxxxxx| ctrl |      |      |  esc |  |xxxxxx|      | Rclk | Lclk | Klck |
  *                        |      |      | shif |      |      |  |      |      |      |      |      |
  *                        `----------------------------------'  `----------------------------------'
+ *
+ * ┌─────┬─────┬─────┬─────┬─────┬─────┐
+ * │ XXX │ XXX │ XXX │ XXX │ XXX │ XXX │
+ * ├─────┼─────┼─────┼─────┼─────┼─────┤   LEFT
+ * │ XXX │ XXX │ XXX │ XXX │ XXX │ XXX │
+ * ├─────┼─────┼─────┼─────┼─────┼─────┼─────┬─────┐
+ * │ XXX │ XXX │ XXX │ XXX │ XXX │ XXX │     │     │
+ * └─────┴─────┴─────┼─────┼─────┼─────┤ XXX │ XXX │
+ *                   │ XXX │ XXX │ XXX │     │     │
+ *                   └─────┴─────┴─────┴─────┴─────┘
+ * 
+ *  
+ *             ┌─────┬─────┬─────┬─────┬─────┬─────┐
+ *             │ XXX │ XXX │ XXX │ XXX │ XXX │ XXX │
+ *     RIGHT   ├─────┼─────┼─────┼─────┼─────┼─────┤
+ *             │ XXX │ XXX │ XXX │ XXX │ XXX │ XXX │
+ * ┌─────┬─────┼─────┼─────┼─────┼─────┼─────┼─────┤
+ * │     │     │ XXX │ XXX │ XXX │ XXX │ XXX │ XXX │
+ * │ XXX │ XXX ├─────┼─────┼─────┼─────┴─────┴─────┘
+ * │     │     │ XXX │ XXX │ XXX │
+ * └─────┴─────┴─────┴─────┴─────┘
+ *
  */                           
      [_MINECFT] = LAYOUT(
           KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,                                          _______, _______, _______, _______, _______, _______,
@@ -172,6 +230,28 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { // this is fine
  *                        |xxxxxx| fnum |  ctl |      |  alt |  |xxxxxx|      |xxxxxx|xxxxxx|xxxxxx|
  *                        |      |      |      |      |      |  |      |      |      |      |      |
  *                        `----------------------------------'  `----------------------------------'
+ *
+ * ┌─────┬─────┬─────┬─────┬─────┬─────┐
+ * │ XXX │ XXX │ XXX │ XXX │ XXX │ XXX │
+ * ├─────┼─────┼─────┼─────┼─────┼─────┤   LEFT
+ * │ XXX │ XXX │ XXX │ XXX │ XXX │ XXX │
+ * ├─────┼─────┼─────┼─────┼─────┼─────┼─────┬─────┐
+ * │ XXX │ XXX │ XXX │ XXX │ XXX │ XXX │     │     │
+ * └─────┴─────┴─────┼─────┼─────┼─────┤ XXX │ XXX │
+ *                   │ XXX │ XXX │ XXX │     │     │
+ *                   └─────┴─────┴─────┴─────┴─────┘
+ * 
+ *  
+ *             ┌─────┬─────┬─────┬─────┬─────┬─────┐
+ *             │ XXX │ XXX │ XXX │ XXX │ XXX │ XXX │
+ *     RIGHT   ├─────┼─────┼─────┼─────┼─────┼─────┤
+ *             │ XXX │ XXX │ XXX │ XXX │ XXX │ XXX │
+ * ┌─────┬─────┼─────┼─────┼─────┼─────┼─────┼─────┤
+ * │     │     │ XXX │ XXX │ XXX │ XXX │ XXX │ XXX │
+ * │ XXX │ XXX ├─────┼─────┼─────┼─────┴─────┴─────┘
+ * │     │     │ XXX │ XXX │ XXX │
+ * └─────┴─────┴─────┴─────┴─────┘
+ *
  */                           
      [_FACTORI] = LAYOUT(
         _______, _______,    KC_F,    KC_M, _______, _______,                                         _______, _______, _______, _______, _______, _______,
@@ -193,6 +273,28 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { // this is fine
  *                        |xxxxxx|      |      |      |      |  |xxxxxx|      |xxxxxx|xxxxxx|xxxxxx|
  *                        |      |      |      |      |      |  |      |      |      |      |      |
  *                        `----------------------------------'  `----------------------------------'
+ *
+ * ┌─────┬─────┬─────┬─────┬─────┬─────┐
+ * │ XXX │ XXX │ XXX │ XXX │ XXX │ XXX │
+ * ├─────┼─────┼─────┼─────┼─────┼─────┤   LEFT
+ * │ XXX │ XXX │ XXX │ XXX │ XXX │ XXX │
+ * ├─────┼─────┼─────┼─────┼─────┼─────┼─────┬─────┐
+ * │ XXX │ XXX │ XXX │ XXX │ XXX │ XXX │     │     │
+ * └─────┴─────┴─────┼─────┼─────┼─────┤ XXX │ XXX │
+ *                   │ XXX │ XXX │ XXX │     │     │
+ *                   └─────┴─────┴─────┴─────┴─────┘
+ * 
+ *  
+ *             ┌─────┬─────┬─────┬─────┬─────┬─────┐
+ *             │ XXX │ XXX │ XXX │ XXX │ XXX │ XXX │
+ *     RIGHT   ├─────┼─────┼─────┼─────┼─────┼─────┤
+ *             │ XXX │ XXX │ XXX │ XXX │ XXX │ XXX │
+ * ┌─────┬─────┼─────┼─────┼─────┼─────┼─────┼─────┤
+ * │     │     │ XXX │ XXX │ XXX │ XXX │ XXX │ XXX │
+ * │ XXX │ XXX ├─────┼─────┼─────┼─────┴─────┴─────┘
+ * │     │     │ XXX │ XXX │ XXX │
+ * └─────┴─────┴─────┴─────┴─────┘
+ *
  */                           
      [_FACTSYM] = LAYOUT(
         _______,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                                         _______, _______, _______, _______, _______, _______,
@@ -214,6 +316,28 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { // this is fine
  *                        |xxxxxx|      |      |      |      |  |xxxxxx|      |xxxxxx|xxxxxx|xxxxxx|
  *                        |      |      |      |      |      |  |      |      |      |      |      |
  *                        `----------------------------------'  `----------------------------------'
+ *
+ * ┌─────┬─────┬─────┬─────┬─────┬─────┐
+ * │ XXX │ XXX │ XXX │ XXX │ XXX │ XXX │
+ * ├─────┼─────┼─────┼─────┼─────┼─────┤   LEFT
+ * │ XXX │ XXX │ XXX │ XXX │ XXX │ XXX │
+ * ├─────┼─────┼─────┼─────┼─────┼─────┼─────┬─────┐
+ * │ XXX │ XXX │ XXX │ XXX │ XXX │ XXX │     │     │
+ * └─────┴─────┴─────┼─────┼─────┼─────┤ XXX │ XXX │
+ *                   │ XXX │ XXX │ XXX │     │     │
+ *                   └─────┴─────┴─────┴─────┴─────┘
+ * 
+ *  
+ *             ┌─────┬─────┬─────┬─────┬─────┬─────┐
+ *             │ XXX │ XXX │ XXX │ XXX │ XXX │ XXX │
+ *     RIGHT   ├─────┼─────┼─────┼─────┼─────┼─────┤
+ *             │ XXX │ XXX │ XXX │ XXX │ XXX │ XXX │
+ * ┌─────┬─────┼─────┼─────┼─────┼─────┼─────┼─────┤
+ * │     │     │ XXX │ XXX │ XXX │ XXX │ XXX │ XXX │
+ * │ XXX │ XXX ├─────┼─────┼─────┼─────┴─────┴─────┘
+ * │     │     │ XXX │ XXX │ XXX │
+ * └─────┴─────┴─────┴─────┴─────┘
+ *
  */                           
      [_MOUSE] = LAYOUT(
         _______, _______, _______, _______, _______, _______,                                         KC_BTN3, KC_BTN4, KC_BTN5, KC_BTN6, KC_BTN7, KC_BTN8,
@@ -537,9 +661,12 @@ void par_finished (qk_tap_dance_state_t *state, void *user_data) {
   par_tap_state.state = cur_dance(state);
   switch (par_tap_state.state) {
     case SINGLE_TAP:        register_code16(KC_LPRN); unregister_code16(KC_LPRN); break;
-    case SINGLE_HOLD:       register_code16(KC_LPRN); unregister_code16(KC_LPRN); register_code16(KC_RPRN); unregister_code16(KC_RPRN); register_code(KC_LEFT); unregister_code(KC_LEFT); break;
+    case SINGLE_HOLD:       register_code16(KC_LPRN); unregister_code16(KC_LPRN); 
+							register_code16(KC_RPRN); unregister_code16(KC_RPRN); 
+							register_code(KC_LEFT); unregister_code(KC_LEFT); break;
     case DOUBLE_TAP:        register_code16(KC_RPRN); unregister_code16(KC_RPRN); break;
-    case DOUBLE_HOLD:       register_code16(KC_LPRN); unregister_code16(KC_LPRN); register_code16(KC_RPRN); unregister_code16(KC_RPRN); break;
+    case DOUBLE_HOLD:       register_code16(KC_LPRN); unregister_code16(KC_LPRN); 
+							register_code16(KC_RPRN); unregister_code16(KC_RPRN); break;
     case DOUBLE_SINGLE_TAP: register_code16(KC_LPRN); unregister_code16(KC_LPRN); register_code16(KC_LPRN); break;
     //Last case is for fast typing. Assuming your key is `f`:
     //For example, when typing the word `buffer`, and you want to make sure that you send `ff` and not `Esc`.
@@ -564,9 +691,12 @@ void cur_finished (qk_tap_dance_state_t *state, void *user_data) {
   cur_tap_state.state = cur_dance(state);
   switch (cur_tap_state.state) {
     case SINGLE_TAP:        register_code16(KC_LCBR); unregister_code16(KC_LCBR); break;
-    case SINGLE_HOLD:       register_code16(KC_LCBR); unregister_code16(KC_LCBR); register_code16(KC_RCBR); unregister_code16(KC_RCBR); register_code(KC_LEFT); unregister_code(KC_LEFT); break;
+    case SINGLE_HOLD:       register_code16(KC_LCBR); unregister_code16(KC_LCBR); 
+							register_code16(KC_RCBR); unregister_code16(KC_RCBR); 
+							register_code(KC_LEFT); unregister_code(KC_LEFT); break;
     case DOUBLE_TAP:        register_code16(KC_RCBR); unregister_code16(KC_RCBR); break;
-    case DOUBLE_HOLD:       register_code16(KC_LCBR); unregister_code16(KC_LCBR); register_code16(KC_RCBR); unregister_code16(KC_RCBR); break;
+    case DOUBLE_HOLD:       register_code16(KC_LCBR); unregister_code16(KC_LCBR); 
+							register_code16(KC_RCBR); unregister_code16(KC_RCBR); break;
     case DOUBLE_SINGLE_TAP: register_code16(KC_LCBR); unregister_code16(KC_LCBR); register_code16(KC_LCBR); break;
     //Last case is for fast typing. Assuming your key is `f`:
     //For example, when typing the word `buffer`, and you want to make sure that you send `ff` and not `Esc`.
@@ -592,9 +722,12 @@ void bra_finished (qk_tap_dance_state_t *state, void *user_data) {
   bra_tap_state.state = cur_dance(state);
   switch (bra_tap_state.state) {
     case SINGLE_TAP:        register_code16(KC_LBRC); unregister_code16(KC_LBRC); break;
-    case SINGLE_HOLD:       register_code16(KC_LBRC); unregister_code16(KC_LBRC); register_code16(KC_RBRC); unregister_code16(KC_RBRC); register_code(KC_LEFT); unregister_code(KC_LEFT); break;
+    case SINGLE_HOLD:       register_code16(KC_LBRC); unregister_code16(KC_LBRC); 
+							register_code16(KC_RBRC); unregister_code16(KC_RBRC); 
+							register_code(KC_LEFT); unregister_code(KC_LEFT); break;
     case DOUBLE_TAP:        register_code16(KC_RBRC); unregister_code16(KC_RBRC); break;
-    case DOUBLE_HOLD:       register_code16(KC_LBRC); unregister_code16(KC_LBRC); register_code16(KC_RBRC); unregister_code16(KC_RBRC); break;
+    case DOUBLE_HOLD:       register_code16(KC_LBRC); unregister_code16(KC_LBRC); 
+							register_code16(KC_RBRC); unregister_code16(KC_RBRC); break;
     case DOUBLE_SINGLE_TAP: register_code16(KC_LBRC); unregister_code16(KC_LBRC); register_code16(KC_LBRC); break;
     //Last case is for fast typing. Assuming your key is `f`:
     //For example, when typing the word `buffer`, and you want to make sure that you send `ff` and not `Esc`.
@@ -620,9 +753,12 @@ void ali_finished (qk_tap_dance_state_t *state, void *user_data) {
   ali_tap_state.state = cur_dance(state);
   switch (ali_tap_state.state) {
     case SINGLE_TAP:        register_code16(KC_LABK); unregister_code16(KC_LABK); break;
-    case SINGLE_HOLD:       register_code16(KC_LABK); unregister_code16(KC_LABK); register_code16(KC_RABK); unregister_code16(KC_RABK); register_code(KC_LEFT); unregister_code(KC_LEFT); break;
+    case SINGLE_HOLD:       register_code16(KC_LABK); unregister_code16(KC_LABK); 
+							register_code16(KC_RABK); unregister_code16(KC_RABK); 
+							register_code(KC_LEFT); unregister_code(KC_LEFT); break;
     case DOUBLE_TAP:        register_code16(KC_RABK); unregister_code16(KC_RABK); break;
-    case DOUBLE_HOLD:       register_code16(KC_LABK); unregister_code16(KC_LABK); register_code16(KC_RABK); unregister_code16(KC_RABK); break;
+    case DOUBLE_HOLD:       register_code16(KC_LABK); unregister_code16(KC_LABK); 
+							register_code16(KC_RABK); unregister_code16(KC_RABK); break;
     case DOUBLE_SINGLE_TAP: register_code16(KC_LABK); unregister_code16(KC_LABK); register_code16(KC_LABK); break;
     //Last case is for fast typing. Assuming your key is `f`:
     //For example, when typing the word `buffer`, and you want to make sure that you send `ff` and not `Esc`.
