@@ -1,5 +1,10 @@
-#include QMK_KEYBOARD_H
+
 #include <stdio.h>
+#include <stdint.h>
+#include <stdbool.h>
+#include "config.h"
+
+#include QMK_KEYBOARD_H
 
 typedef struct {
     bool is_press_action;
@@ -50,7 +55,6 @@ void ali_reset (qk_tap_dance_state_t *state, void *user_data);
 
 enum layers {
     _QWERTY = 1,
-    _SHIFT,
     _SYM,
     _MOUSE,
     _MINECFT,
@@ -61,8 +65,7 @@ enum layers {
 
 
 // Aliases for readability
-#define HOME            DF(_QWERTY)
-#define SHF             MO(_SHIFT)
+#define HOME            DF(_QWERTY){}
 #define SYM             MO(_SYM)
 #define SYT             TG(_SYM)
 #define MINECFT         TG(_MINECFT)
@@ -70,8 +73,8 @@ enum layers {
 #define FACTSYM         MO(_FACTSYM)
 #define MOUSE           MO(_MOUSE)
 
-#define SAB             LT(_SYM, KC_BSPC)           // click for backspace, hold for sym
-#define AAD             MT(MOD_LALT, KC_DEL)        // click for delete, hold for alt
+#define SAB             LT(_SYM, KC_BSPC)         // click for backspace, hold for sym
+#define AAD MT(MOD_LGUI, KC_DEL)      // click for delete, hold for alt
 
 
 
@@ -106,10 +109,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { // this is fine
  */
 
     [_QWERTY] = LAYOUT(
-        KC_ESC,     KC_Q,       KC_W,       KC_E,       KC_R,       KC_T,                                                       KC_Y,       KC_U,       KC_I,       KC_O,       KC_P,       RGB_HUI,
-        KC_TAB,     KC_A,       KC_S,       KC_D,       KC_F,       KC_G,                                                       KC_H,       KC_J,       KC_K,       KC_L,       KC_SCLN,    KC_QUOTE,
-        _______,    KC_Z,       KC_X,       KC_C,       KC_V,       KC_B,       XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    KC_N,       KC_M,       KC_COMM,    KC_DOT,     KC_SLSH,    RGB_SAI,
-                                            MINECFT,    KC_LSPO,    KC_LCTL,    KC_SPC,     AAD,        SAB,        KC_ENT,TD(X_CTL),      KC_RSPC,    KC_HOME
+      KC_ESC,   KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,                                             KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,     RGB_TOG,
+      KC_TAB,   KC_A,     KC_S,     KC_D,     KC_F,     KC_G,                                             KC_H,     KC_J,     KC_K,     KC_L,     KC_SCLN,  KC_QUOTE,
+      KC_LALT,  KC_Z,     KC_X,     KC_C,     KC_V,     KC_B,     XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  KC_N,     KC_M,     KC_COMM,  KC_DOT,   KC_SLSH,  RGB_SAI,
+                                    FACTORI,  KC_LSPO,  KC_LCTL,  KC_SPC,   AAD,      SAB,      KC_ENT,   MOUSE,    KC_RSPC,  KC_HOME
     ),
 
 
@@ -127,10 +130,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { // this is fine
  *                      `----------------------------------'  `----------------------------------'
  */
     [_SYM] = LAYOUT(
-      _______, TD(ALI), TD(BRA), TD(CUR), TD(PAR), _______,                                           KC_GRV ,  KC_7  ,  KC_8  ,   KC_9  ,   KC_0 , _______,
-      _______, KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT, _______,                                           KC_MINS,  KC_4  ,  KC_5  ,   KC_6  , KC_BSLS, _______,
-      _______,   KC_GT, KC_RBRC, KC_RCBR, KC_RPRN, _______, XXXXXXX, XXXXXXX,       XXXXXXX, XXXXXXX, KC_EQL ,  KC_1  ,  KC_2  ,   KC_3  , _______, _______,
-                                 _______, _______, _______, _______, _______,       _______, _______, _______, _______, _______
+      _______,  TD(ALI),  TD(BRA),  TD(CUR),  TD(PAR),  KC_F2,                                            KC_GRV,   KC_7,     KC_8,     KC_9,     KC_0,     _______,
+      _______,  KC_LEFT,  KC_DOWN,  KC_UP,    KC_RGHT,  KC_F5,                                            KC_MINS,  KC_4,     KC_5,     KC_6,     KC_BSLS,  _______,
+      _______,  KC_GT,    KC_RBRC,  KC_RCBR,  KC_RPRN,  _______,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  KC_EQL,   KC_1,     KC_2,     KC_3,     _______,  _______,
+                                    _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______
     ),
 
 
@@ -153,7 +156,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { // this is fine
           KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,                                          _______, _______, _______, _______, _______, _______,
           KC_7,    KC_A,    KC_S,    KC_W,    KC_D,    KC_E,                                          _______, KC_MS_L, KC_MS_U, KC_MS_D, KC_MS_R, _______,
           KC_J, KC_SLSH,    KC_F,    KC_Q,    KC_8,    KC_9, XXXXXXX, XXXXXXX,      _______, _______, _______, _______, _______, _______, _______, _______,
-                                  MINECFT, KC_LCTL, KC_LSFT,  KC_SPC,  KC_ESC,      _______, KC_BTN2, KC_BTN1, KC_LOCK, _______
+                                  MINECFT, KC_LCTL, KC_LSFT,  KC_SPC,  KC_ESC,      _______, KC_BTN2, KC_BTN1, _______, _______
     ),
 
 /*
@@ -217,7 +220,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { // this is fine
         _______, KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, _______,                                         KC_WH_L, KC_BTN1, KC_BTN2, KC_WH_U, KC_WH_D, KC_WH_R,
         _______, _______, _______, _______, _______, _______, _______, _______,     _______, _______, _______, KC_ACL0, KC_ACL1, KC_ACL2, _______, _______,
                                    _______, _______, _______, _______, _______,     _______, _______, _______, _______, _______
-    ),
+    )
 };
 
 
@@ -334,7 +337,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { // this is fine
             anim_sleep = timer_read32();
         } else if (timer_elapsed32(anim_sleep) > OLED_TIMEOUT) {
             oled_off();
-            rgblight_enable();
+            rgblight_disable();
         } 
     
         

@@ -19,7 +19,7 @@
 #define BOTH_SHIFTS_TURNS_ON_CAPS_WORD
 
 #define OLED_BRIGHTNESS 255
-#define OLED_TIMEOUT 6000
+#define OLED_TIMEOUT 30000
 
 #undef LOCKING_SUPPORT_ENABLE // cherry mx lock only
 #undef LOCKING_RESYNC_ENABLE  // cherry mx lock only
@@ -35,6 +35,7 @@
 
 
 #define RGBLIGHT_SLEEP
+
 
 #define RGBLIGHT_LAYERS
 
