@@ -1,10 +1,10 @@
 #pragma once
 
 #ifdef RGBLIGHT_ENABLE
-#    define RGBLIGHT_HUE_STEP  8
-#    define RGBLIGHT_SAT_STEP  8
-#    define RGBLIGHT_VAL_STEP  8
-#    define RGBLIGHT_LIMIT_VAL 150
+#define RGBLIGHT_HUE_STEP 8
+#define RGBLIGHT_SAT_STEP 8
+#define RGBLIGHT_VAL_STEP 8
+#define RGBLIGHT_LIMIT_VAL 150
 #endif
 
 #define DEFAULT_LAYER = 1
@@ -24,8 +24,7 @@
 #undef LOCKING_SUPPORT_ENABLE // cherry mx lock only
 #undef LOCKING_RESYNC_ENABLE  // cherry mx lock only
 
-
-#define LAYER_STATE_8BIT   // using less than 8 layers
+#define LAYER_STATE_8BIT // using less than 8 layers
 
 #define SPLIT_LAYER_STATE_ENABLE
 #define SPLIT_LED_STATE_ENABLE
@@ -33,17 +32,14 @@
 #define SPLIT_MODS_ENABLE
 #define SPLIT_OLED_ENABLE
 
-
 #define RGBLIGHT_SLEEP
-
 
 #define RGBLIGHT_LAYERS
 
-
-#define MOUSEKEY_DELAY          0
-#define MOUSEKEY_INTERVAL       16
-#define MOUSEKEY_WHEEL_DELAY    0
-#define MOUSEKEY_MAX_SPEED      6
-#define MOUSEKEY_TIME_TO_MAX    64
+#define MOUSEKEY_DELAY 0
+#define MOUSEKEY_INTERVAL 16
+#define MOUSEKEY_WHEEL_DELAY 0
+#define MOUSEKEY_MAX_SPEED 6
+#define MOUSEKEY_TIME_TO_MAX 64
 
 #define MK_COMBINED

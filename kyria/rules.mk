@@ -8,13 +8,13 @@ RGBLIGHT_ANIMATIONS = no  # Enables rgb animations
 RGB_MATRIX_ENABLE = no
 
 MOUSEKEY_ENABLE = yes
-KEY_LOCK_ENABLE = no
+KEY_LOCK_ENABLE = yes
 
 
 WPM_ENABLE = yes	# Enable word per minute counter
 
 PROGRAMMABLE_BUTTON_ENABLE = no
-CAPS_WORD_ENABLE = yes
+CAPS_WORD_ENABLE = no
 
 MIDI_ENABLE = no
 AUDIO_ENABLE = no
